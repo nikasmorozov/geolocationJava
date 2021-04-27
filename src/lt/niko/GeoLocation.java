@@ -11,29 +11,26 @@ public class GeoLocation {
     private double lon;
     static int numLocations = 1;
 
-    GeoLocation(){
+    GeoLocation() {
         this.setLat(randomInRange(-90, 90));
         this.setLon((randomInRange(-90, 90)));
         numLocations++;
     }
 
-    GeoLocation(double lat, double lon){
+    GeoLocation(double lat, double lon) {
         this.setLat(lat);
         this.setLon(lon);
         numLocations++;
     }
 
-    GeoLocation(GeoLocation geoLocationToCopy){
+    GeoLocation(GeoLocation geoLocationToCopy) {
         this.setLat(geoLocationToCopy.getLat() + randomInRange(-0.1, 0.1));
         this.setLon(geoLocationToCopy.getLon() + randomInRange(-0.1, 0.1));
     }
 
 
-
-
-    private double randomInRange(double minValue, double maxValue){
-        double angle = minValue + (maxValue-minValue) * random.nextDouble();
-        return angle;
+    private double randomInRange(double minValue, double maxValue) {
+        return minValue + (maxValue - minValue) * random.nextDouble();
 
     }
 
@@ -46,11 +43,11 @@ public class GeoLocation {
         return lon;
     }
 
-    public static int getNumLocations(){
+    public static int getNumLocations() {
         return numLocations;
     }
 
-    public void setLat(double lat){
+    public void setLat(double lat) {
         this.lat = lat;
     }
 
@@ -58,11 +55,11 @@ public class GeoLocation {
         this.lon = lon;
     }
 
-    public void print(){
+    public void print() {
         System.out.println("[" + locationFormater.format(lat) + ", " + locationFormater.format(lon) + "]");
     }
 
-    public static String distance(GeoLocation location1, GeoLocation location2){
+    public static String distance(GeoLocation location1, GeoLocation location2) {
         double lat1 = location1.getLat();
         double lat2 = location2.getLat();
 
@@ -84,11 +81,10 @@ public class GeoLocation {
                         Math.cos(lat2);
         double rad = 6371;
         double c = 2 * Math.asin(Math.sqrt(a));
-        String formatedDistance = String.format("%.1f", rad * c);
+        return String.format("%.1f", rad * c);
 
-        return formatedDistance;
+
     }
-
 
 
 }
